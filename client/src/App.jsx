@@ -1,27 +1,7 @@
-import axios from "axios";
+import Register from "./pages/Register";
 
 function App() {
-    const createUser = async () => {
-        try {
-            const response = await axios.post(
-                "http://localhost:5000/api/test-user"
-            );
-
-            console.log("User created:", response.data);
-        } catch (error) {
-            console.error("Error:", error);
-        }
-    };
-
-    return (
-        <div>
-            <h1>GameShop</h1>
-
-            <button onClick={createUser}>
-                Create Test User
-            </button>
-        </div>
-    );
+    return <Register />;
 }
 
 export default App;
