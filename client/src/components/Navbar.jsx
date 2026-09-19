@@ -40,6 +40,13 @@ function Navbar() {
                         )}
                     </Link>
 
+                    <Link
+                        to="/orders"
+                        className="text-sm text-zinc-400 transition hover:text-white"
+                    >
+                        Orders
+                    </Link>
+
                     {isAuthenticated ? (
                         <>
                             <Link

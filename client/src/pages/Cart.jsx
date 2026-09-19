@@ -190,11 +190,12 @@ function Cart() {
                             </span>
                         </div>
 
-                        <button
-                            className="mt-6 w-full rounded-lg bg-white px-5 py-3 font-semibold text-black transition hover:bg-zinc-200"
+                        <Link
+                            to="/checkout"
+                            className="mt-6 block w-full rounded-lg bg-white px-5 py-3 text-center font-semibold text-black transition hover:bg-zinc-200"
                         >
                             Proceed to Checkout
-                        </button>
+                        </Link>
 
                     </div>
 

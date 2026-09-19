@@ -7,6 +7,7 @@ dotenv.config();
 const connectDB = require("./config/db");
 const authRoutes = require("./routes/authRoutes");
 const gameRoutes = require("./routes/gameRoutes");
+const orderRoutes = require("./routes/orderRoutes");
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use(cors());
 app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/games", gameRoutes);
+app.use("/api/orders", orderRoutes);
 
 connectDB();
 

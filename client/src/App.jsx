@@ -8,6 +8,9 @@ import Profile from "./pages/Profile";
 import ProtectedRoute from "./components/ProtectedRoute";
 import GameDetails from "./pages/GameDetails";
 import Cart from "./pages/Cart";
+import Checkout from "./pages/Checkout";
+import OrderSuccess from "./pages/OrderSuccess";
+import Orders from "./pages/Orders";
 
 function App() {
     return (
@@ -25,6 +28,26 @@ function App() {
                     element={
                         <ProtectedRoute>
                             <Profile />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/checkout"
+                    element={
+                        <ProtectedRoute>
+                            <Checkout />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/order-success"
+                    element={<OrderSuccess />}
+                />
+                <Route
+                    path="/orders"
+                    element={
+                        <ProtectedRoute>
+                            <Orders />
                         </ProtectedRoute>
                     }
                 />
