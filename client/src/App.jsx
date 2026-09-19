@@ -6,6 +6,8 @@ import Register from "./pages/Register";
 import Navbar from "./components/Navbar";
 import Profile from "./pages/Profile";
 import ProtectedRoute from "./components/ProtectedRoute";
+import GameDetails from "./pages/GameDetails";
+import Cart from "./pages/Cart";
 
 function App() {
     return (
@@ -14,6 +16,8 @@ function App() {
 
             <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/games/:id" element={<GameDetails />} />
+                <Route path="/cart" element={<Cart />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route

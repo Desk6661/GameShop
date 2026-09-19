@@ -6,7 +6,7 @@ const {
 
 const getGames = async (req, res) => {
     try {
-        const { search, genre, sort } = req.query;
+        const { search, genre, sort, featured } = req.query;
 
         const query = {
             isAvailable: true
@@ -26,6 +26,11 @@ const getGames = async (req, res) => {
                 $regex: genre,
                 $options: "i"
             };
+        }
+
+        // Filter featured games
+        if (featured === "true") {
+            query.isFeatured = true;
         }
 
         let sortOption = {
