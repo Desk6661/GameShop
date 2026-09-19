@@ -2,10 +2,11 @@ const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
 
+dotenv.config();
+
 const connectDB = require("./config/db");
 const authRoutes = require("./routes/authRoutes");
-
-dotenv.config();
+const gameRoutes = require("./routes/gameRoutes");
 
 const app = express();
 
@@ -14,6 +15,7 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 app.use("/api/auth", authRoutes);
+app.use("/api/games", gameRoutes);
 
 connectDB();
 
@@ -27,8 +29,6 @@ app.get("/api/test", (req, res) => {
         success: true
     });
 });
-
-
 
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
