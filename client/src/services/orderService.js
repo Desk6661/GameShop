@@ -13,3 +13,9 @@ export const getMyOrders = async () => {
 
     return response.data;
 };
+
+export const getMyLibrary = async () => {
+    const response = await api.get("/orders/library");
+
+    return response.data;
+};

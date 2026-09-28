@@ -60,7 +60,8 @@ const createOrder = async (req, res) => {
             user: req.user.userId,
             items: orderItems,
             subtotal,
-            total: subtotal
+            total: subtotal,
+            status: "completed"
         });
 
         res.status(201).json({
@@ -98,7 +99,50 @@ const getMyOrders = async (req, res) => {
     }
 };
 
+const getMyLibrary = async (req, res) => {
+    try {
+        const orders = await Order.find({
+            user: req.user.userId,
+            status: "completed"
+        }).populate("items.game");
+
+        const libraryMap = new Map();
+
+        for (const order of orders) {
+            for (const item of order.items) {
+                if (!item.game) {
+                    continue;
+                }
+
+                const gameId = item.game._id.toString();
+
+                if (!libraryMap.has(gameId)) {
+                    libraryMap.set(gameId, {
+                        game: item.game,
+                        purchasedAt: order.createdAt
+                    });
+                }
+            }
+        }
+
+        const library = Array.from(libraryMap.values());
+
+        res.json({
+            success: true,
+            count: library.length,
+            library
+        });
+    } catch (error) {
+        console.error("Get library error:", error);
+
+        res.status(500).json({
+            message: "Failed to fetch library"
+        });
+    }
+};
+
 module.exports = {
     createOrder,
-    getMyOrders
+    getMyOrders,
+    getMyLibrary
 };
